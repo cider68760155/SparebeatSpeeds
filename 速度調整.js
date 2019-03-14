@@ -1,7 +1,8 @@
 // ==UserScript==
-// @name         Sparebeat速度調整
+// @name         SparebeatSpeeds
 // @namespace    https://twitter.com/cider68760155
 // @author       cider
+// @description  This kept notes speed constant on Sparebeat
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js
 // @match        http://sparebeat.suzukibakery.com
 // @match        http://sparebeat.suzukibakery.com/*
@@ -33,8 +34,10 @@ function play(){
 function index(){
     if(localStorage.getItem('redirected')==0){
         if(location.search[0]=="?"){
-            var baseBPM=location.search.match(/[0-9]+/);
-            localStorage.setItem("baseBPM",Number(baseBPM));
+            var urlParams = new URLSearchParams(window.location.search);
+            if(urlParams.has('baseBPM')){
+                localStorage.setItem("baseBPM",Number(urlParams.get('baseBPM')));
+            }
         }
         return;
     }

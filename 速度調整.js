@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         SparebeatSpeeds
-// @namespace    https://twitter.com/cider68760155
+// @namespace    https://github.com/cider68760155/SparebeatSpeeds
 // @author       cider
 // @description  This kept notes speed constant on Sparebeat
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js
@@ -38,6 +38,9 @@ function index(){
             if(urlParams.has('baseBPM')){
                 localStorage.setItem("baseBPM",Number(urlParams.get('baseBPM')));
             }
+        }
+        else {
+            location.href=location.href+"?baseBPM="+String(localStorage.getItem('baseBPM'));
         }
         return;
     }
